@@ -8,7 +8,7 @@
 2. 次のどちらか: Homebrew 経由で `brew install chezmoi`、または [one-line install](https://github.com/chezmoi/chezmoi#one-line-package-install) で chezmoi のみ入れる。Homebrew 自体は未導入でも、初回の `chezmoi apply` 内で `run_once_after_darwin-02-homebrew.sh` がインストールする（ネットワーク必須）。
 3. リポジトリを元に初期化（GitHub 上の URL に置き換え）:
   ```bash
-   chezmoi init https://github.com/seiya0429/dotfiles.git
+   chezmoi init https://github.com/seiya0429/chezmoi-dotfiles.git
    chezmoi apply
   ```
    このとき **sudo を求められる**ことがあります（`run_onchange_darwin-macos-defaults.sh` 内のファイアウォール・Spotlight 等）。
@@ -126,5 +126,5 @@ mas search "アプリケーション名"
 
 - 以降の正は `~/.local/share/chezmoi` の VCS です。内容を揃えたうえで `chezmoi init` し直すか、手元の clone を捨てて上記 `chezmoi init <url>` から入り直すと一貫します。
 - `/Users/seiya/dotfiles` など **chezmoi ソース外への直 clone は使わない**（二重管理と `DOTFILES IS DIRTY` 警告の原因になる）。編集は `chezmoi cd` または `~/.local/share/chezmoi` を開く。
-- 旧リポ `chezmoi-dotfiles` は廃止済み。正本は `https://github.com/seiya0429/dotfiles` のみ。
+- 正本は `https://github.com/seiya0429/chezmoi-dotfiles` のみ。旧 `dotfiles` リポはアーカイブ済み（read-only）のため push 不可。
 

@@ -125,4 +125,6 @@ mas search "アプリケーション名"
 ### 移行前に `git clone` で `~/dotfiles` していた場合
 
 - 以降の正は `~/.local/share/chezmoi` の VCS です。内容を揃えたうえで `chezmoi init` し直すか、手元の clone を捨てて上記 `chezmoi init <url>` から入り直すと一貫します。
+- `/Users/seiya/dotfiles` など **chezmoi ソース外への直 clone は使わない**（二重管理と `DOTFILES IS DIRTY` 警告の原因になる）。編集は `chezmoi cd` または `~/.local/share/chezmoi` を開く。
+- 旧リポ `chezmoi-dotfiles` は廃止済み。正本は `https://github.com/seiya0429/dotfiles` のみ。
 

@@ -12,15 +12,22 @@
    chezmoi apply
   ```
    このとき **sudo を求められる**ことがあります（`run_onchange_darwin-macos-defaults.sh` 内のファイアウォール・Spotlight 等）。
-4. 任意: [mizchi/chezmoi-dotfiles](https://github.com/mizchi/chezmoi-dotfiles#install) 同様、追加の skills 用 symlink が必要なら:
-  ```bash
-   ~/.claude/skills/install.sh
-  ```
-5. 補足ブートストラップ: `chezmoi apply` 内で `run_after_darwin-01-xcode-clt.sh` が CLT 未導入時にインストーラを起動する。CLT のインストール完了後にもう一度 `chezmoi apply` するとよい。`dot_Brewfile` を変えたあとパッケージを揃える場合は、`chezmoi apply` 済みで `~/.Brewfile` があるなら `brew bundle --file ~/.Brewfile`、または PATH に Homebrew が無いときは `/opt/homebrew/bin/brew bundle --file ~/.Brewfile`。ソースだけ更新した段階なら `brew bundle --file ~/.local/share/chezmoi/dot_Brewfile`（chezmoi の既定のソースパス前提）。`run_once_*` を再実行したい場合は `chezmoi state delete-bucket --bucket=scriptState`（公式ドキュメント参照）。
+4. 補足ブートストラップ: `chezmoi apply` 内で `run_after_darwin-01-xcode-clt.sh` が CLT 未導入時にインストーラを起動する。CLT のインストール完了後にもう一度 `chezmoi apply` するとよい。`dot_Brewfile` を変えたあとパッケージを揃える場合は、`chezmoi apply` 済みで `~/.Brewfile` があるなら `brew bundle --file ~/.Brewfile`、または PATH に Homebrew が無いときは `/opt/homebrew/bin/brew bundle --file ~/.Brewfile`。ソースだけ更新した段階なら `brew bundle --file ~/.local/share/chezmoi/dot_Brewfile`（chezmoi の既定のソースパス前提）。`run_once_*` を再実行したい場合は `chezmoi state delete-bucket --bucket=scriptState`（公式ドキュメント参照）。
 
 ## 日常的な編集
 
 - ソースは `$(chezmoi source-path)`（通常 `~/.local/share/chezmoi`）で、変更後は `chezmoi apply` または `chezmoi cd` して `git` で push します。
+
+## Agent skills
+
+Claude Code と Codex の skills は chezmoi で **それぞれ独立管理** しています（シンボリックリンク共有なし）。
+
+| ツール | ソース | 反映先 |
+|--------|--------|--------|
+| Claude Code | `dot_claude/skills/` | `~/.claude/skills/` |
+| Codex | `dot_codex/skills/` | `~/.codex/skills/` |
+
+skill を追加・更新したら `chezmoi apply` で反映します。両方に同じ skill が必要な場合は、それぞれのディレクトリに置いてください。
 
 ## Claude Code マルチアカウント
 

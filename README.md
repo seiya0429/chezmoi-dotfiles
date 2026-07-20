@@ -26,8 +26,11 @@ Claude Code と Codex の skills は chezmoi で **それぞれ独立管理** �
 |--------|--------|--------|
 | Claude Code | `dot_claude/skills/` | `~/.claude/skills/` |
 | Codex | `dot_codex/skills/` | `~/.codex/skills/` |
+| Cursor | —（Git 管理しない） | `~/.cursor/skills/` / `~/.cursor/skills-cursor/` |
 
 skill を追加・更新したら `chezmoi apply` で反映します。両方に同じ skill が必要な場合は、それぞれのディレクトリに置いてください。
+
+Cursor の skills（ユーザー作成の `~/.cursor/skills/` と Cursor 同梱の `~/.cursor/skills-cursor/`）は **このリポジトリでは管理しません**。Cursor 側の更新・同期に任せ、chezmoi ソースにも置かないでください。
 
 ## Claude Code マルチアカウント
 

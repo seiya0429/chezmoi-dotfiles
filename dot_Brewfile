@@ -41,5 +41,6 @@ cask "cursor"
 cask "keyboardcleantool"
 cask "cyberduck"
 cask "claude-code"
+cask "maestro"
 
 mas "Magnet マグネット", id: 441258766

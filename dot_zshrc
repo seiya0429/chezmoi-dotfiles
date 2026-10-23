@@ -80,3 +80,8 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
     echo -e "\e[36m=========================\e[m" 1>&2
   fi
 ) &!
+# eMudhra 対応: pip に、同梱の証明書の一覧ではなく /etc/ssl/cert.pem を使わせる
+export PIP_CERT=/etc/ssl/cert.pem
+# eMudhra 対応: gcloud・AWS CLI に、同梱の証明書の一覧ではなく /etc/ssl/cert.pem を使わせる
+export CLOUDSDK_CORE_CUSTOM_CA_CERTS_FILE=/etc/ssl/cert.pem
+export AWS_CA_BUNDLE=/etc/ssl/cert.pem

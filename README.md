@@ -62,11 +62,15 @@ Host *
 
 ### Node.js
 
+バージョンは `dot_tool-versions`（反映先 `~/.tool-versions`）を正とする。README にはバージョンを書かない。
+
 ```bash
 asdf plugin add nodejs
-asdf install nodejs 20.9.0
-asdf global nodejs 20.9.0
+asdf install nodejs   # ~/.tool-versions に書かれたバージョンを入れる
 ```
+
+他のツールも含めてまとめて入れる場合は、必要なプラグインを追加したうえで `asdf install` を実行する。
+asdf 0.16 以降では `asdf global` は廃止されているため使わない（`~/.tool-versions` がグローバル設定になる）。
 
 ## TIPS
 

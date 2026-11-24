@@ -8,11 +8,11 @@ T3 Code でこのリポジトリを触る前に読む。
 |---|---|---|---|---|
 | リーダー | Claude / Claude Fable 5.2（`claude-fable-5-2`） | 書き込み可。モードは `approval-required` | SPEC.md を書く。作業をファイルが重ならないスライスに分け、`delegate_task` で子へ振る。一番難しいスライスは自分でやる。レビューを最大 3 往復でまとめ、人に返す | 人の承認前に実装へ進むこと。マージ、デプロイ、秘密ファイルを独断で触ること |
 | 実装 | Claude / Claude Opus 5.5（`claude-opus-5-5`） | 書き込み可。モードは `approval-required`。スライスごとに worktree | SPEC と BRIEF の範囲だけ実装する | 割り当て外のファイル、他エージェントの worktree、レビュー指摘の自己クローズ（修正は指示された範囲だけ） |
-| テスト | Claude / Claude Opus 5.5（`claude-opus-5-5`。実装と同じモデル） | 読み取りのみ（`approval-required`。プロンプトでも編集禁止） | 実装とは別のスレッドで、実装の履歴なしに diff と SPEC を読み、問題を探す。直さない | 編集、修正、コミット、PR、`chezmoi apply`。指摘を自分で直すこと |
+| テスト | Codex / GPT-6.2 Astra（`gpt-6.2-astra`） | 読み取りのみ（`approval-required`。プロンプトでも編集禁止） | 実装とは別のスレッドで、実装の履歴なしに diff と SPEC を読み、問題を探す。直さない | 編集、修正、コミット、PR、`chezmoi apply`。指摘を自分で直すこと |
 | 文章 | Cursor / Gemini 4 Neon（`gemini-4-neon`） | 書き込み可（ドキュメントなどの指定パスのみ）。`approval-required` | README や説明文 | 指定パス以外、設定やスクリプトの改変 |
 | 振り分け | Grok Bot | 読み取り中心。`approval-required` | 依頼を 7 項目の BRIEF にして渡す | マージ、デプロイ、設定変更、シークレットの持ち出し |
 
-テストは実装と同じモデルなので、必ず別スレッドで、実装の会話履歴を渡さずに diff と SPEC だけを読ませる。
+テストは実装とは別のモデル（Codex / GPT-6.2 Astra）が担う。必ず実装とは別スレッドで、実装の会話履歴を渡さずに diff と SPEC だけを読ませる。
 
 ## このリポジトリでの注意
 
@@ -26,7 +26,7 @@ T3 Code でこのリポジトリを触る前に読む。
 - 1 フォルダを書き込むエージェントは同時に 1 つ。並列なら worktree を分ける。
 - 役割ごとに権限を分ける。テストは読み取りのみ。
 - 新規スレッドは Full access にせず `approval-required` にする。
-- レビューは実装とは別スレッドで行う（モデルは現在どちらも Claude / Opus 5.5）。最大 3 往復。それ以上は人の判断。
+- レビューは実装とは別スレッドで行う（実装は Claude / Opus 5.5、テストは Codex / GPT-6.2 Astra）。最大 3 往復。それ以上は人の判断。
 - 引き継ぎは必ず 7 項目指示書を使う。
 - 完了は「完了条件」が満たされたときだけ。
 

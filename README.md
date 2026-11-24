@@ -64,13 +64,16 @@ Host *
 
 バージョンは `dot_tool-versions`（反映先 `~/.tool-versions`）を正とする。README にはバージョンを書かない。
 
+ホームの `~/.tool-versions` を読ませるため、ホームディレクトリ（`~`）で実行する。
+
 ```bash
+cd ~
 asdf plugin add nodejs
-asdf install nodejs   # ~/.tool-versions に書かれたバージョンを入れる
+asdf install   # ~/.tool-versions に書かれたツールとバージョンをまとめて入れる
 ```
 
-他のツールも含めてまとめて入れる場合は、必要なプラグインを追加したうえで `asdf install` を実行する。
-asdf 0.16 以降では `asdf global` は廃止されているため使わない（`~/.tool-versions` がグローバル設定になる）。
+`asdf install` は `~/.tool-versions` にある他のツールも入れる。Node.js 以外のツールは、先に `asdf plugin add <name>` でプラグインを追加しておく。
+`asdf global` は使わない（`~/.tool-versions` がグローバル設定になる）。
 
 ## TIPS
 

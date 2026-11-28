@@ -3,3 +3,7 @@ TEAM.md
 .DS_Store
 dot_cursor/skills
 dot_cursor/skills-cursor
+.config/karabiner/karabiner.json
+.config/karabiner/automatic_backups
+.config/karabiner/automatic_backups/**
+.config/karabiner/**/*.log

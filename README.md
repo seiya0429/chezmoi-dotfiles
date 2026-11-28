@@ -34,6 +34,10 @@ Cursor の skills（ユーザー作成の `~/.cursor/skills/` と Cursor 同梱�
 
 ## 手動での設定
 
+### Karabiner-Elements
+
+日本語/英語入力の切替（⌘単押しで英数・かな）は `run_after_darwin-03-karabiner.sh` が入れます。`~/.config/karabiner/karabiner.json` が無いときは `dot_config/karabiner/karabiner.json` を置き、既にあるときはプロファイルを残し、切替ルールを同じ位置でソースの内容に合わせます（rev が変わっても 1 件のままです）。ルールを変えるときはソースの JSON を編集してください。`chezmoi re-add` で設定ファイル全体は取り込まないでください。
+
 ### SSH鍵の設定
 
 1PasswordのSSH鍵を使うための設定追加

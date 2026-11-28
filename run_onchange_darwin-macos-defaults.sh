@@ -80,8 +80,8 @@ sudo defaults write /Library/Preferences/com.Apple.alf globalstate -int 1 \
 	|| echo "run_onchange_darwin-macos-defaults: skipped sudo (firewall); re-run: chezmoi apply in Terminal" >&2
 
 # Others
-## GoogleのパブリックDNSを使用する
-networksetup -setdnsservers Wi-Fi 2001:4860:4860::8844 2001:4860:4860::8888 8.8.4.4 8.8.8.8 \
+## GoogleのパブリックDNS（IPv4のみ）を使用する
+networksetup -setdnsservers Wi-Fi 8.8.8.8 8.8.4.4 \
 	|| echo "run_onchange_darwin-macos-defaults: networksetup failed (may need admin)" >&2
 ## 自動で頭文字を大文字にしない
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool "false"

@@ -36,7 +36,7 @@ Cursor の skills（ユーザー作成の `~/.cursor/skills/` と Cursor 同梱�
 
 ### Karabiner-Elements
 
-日本語/英語入力の切替（⌘単押しで英数・かな）を含む Karabiner 設定は `dot_config/karabiner/karabiner.json` で chezmoi 管理しています。変更したあとは `chezmoi re-add ~/.config/karabiner/karabiner.json` してからコミットしてください。
+日本語/英語入力の切替（⌘単押しで英数・かな）は `run_after_darwin-03-karabiner.sh` が入れます。`~/.config/karabiner/karabiner.json` が無いときは `dot_config/karabiner/karabiner.json` を置き、既にあるときはプロファイルを残して同じ切替ルールだけを足します（再適用しても重複しません）。ルールを変えるときはソースの JSON を編集してください。`chezmoi re-add` で設定ファイル全体は取り込まないでください。
 
 ### SSH鍵の設定
 

@@ -34,6 +34,10 @@ Cursor の skills（ユーザー作成の `~/.cursor/skills/` と Cursor 同梱�
 
 ## 手動での設定
 
+### Karabiner-Elements
+
+日本語/英語入力の切替（⌘単押しで英数・かな）を含む Karabiner 設定は `dot_config/karabiner/karabiner.json` で chezmoi 管理しています。変更したあとは `chezmoi re-add ~/.config/karabiner/karabiner.json` してからコミットしてください。
+
 ### SSH鍵の設定
 
 1PasswordのSSH鍵を使うための設定追加

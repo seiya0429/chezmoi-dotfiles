@@ -40,5 +40,7 @@ cask "cursor"
 cask "keyboardcleantool"
 cask "cyberduck"
 cask "claude-code"
+cask "t3-code"
+cask "grok-bot"
 
 mas "Magnet マグネット", id: 441258766
